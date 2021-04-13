@@ -1,5 +1,8 @@
 package inheritance;
 
+import java.util.Collections;
+import java.util.Comparator;
+
 public class Action implements Behavior {
     @Override
     public void countQuantityProgramingBook(Book[] listBook) {
@@ -16,20 +19,16 @@ public class Action implements Behavior {
 
     @Override
     public void sortBook(Book[] listBook) {
-        for (int i = 0; i < listBook.length; i++) {
-            Book temp;
-            for (int j = i; j < listBook.length - 1; j++) {
-                if (listBook[j].getPrice() > listBook[j + 1].getPrice()) {
-                    temp = listBook[j + 1];
-                    listBook[j + 1] = listBook[j];
-                    listBook[j] = temp;
-                }
-            }
-        }
-        for (Book b :
-                listBook) {
-            b.toString();
-        }
+//        for (int i = 0; i < listBook.length; i++) {
+//            Book temp;
+//            for (int j = i; j < listBook.length - 1; j++) {
+//                if (listBook[j].getPrice() > listBook[j + 1].getPrice()) {
+//                    temp = listBook[j + 1];
+//                    listBook[j + 1] = listBook[j];
+//                    listBook[j] = temp;
+//                }
+//            }
+//        }
     }
 
     @Override
