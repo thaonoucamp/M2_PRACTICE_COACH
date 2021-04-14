@@ -11,33 +11,55 @@ public class Management implements Action {
 
 
     @Override
-    public void add() {
+    public Customer[] add(Customer[] listCustomer) {
         for (int i = 0; i < listCustomer.length; i++) {
             System.out.println("Input Customer index " + (i + 1));
-            listCustomer[i] = inputInfoCus();
+            if (listCustomer[i] == null) {
+                listCustomer[i] = inputInfoCus();
+            } else {
+                System.out.println("OUT OF ROOM !");
+            }
         }
+        showInfoCustomer();
+        return listCustomer;
     }
 
     @Override
-    public Customer[] edit(Customer[] listCustomer, int id) {
-        Customer[] afEditListCus = new Customer[2];
+    public Customer[] edit(Customer[] listCustomer) {
+        int id;
+
+        System.out.println("Enter the id you want to edit :");
+        id = Integer.parseInt(sc.nextLine());
+
         for (int i = 0; i < listCustomer.length; i++) {
             if (listCustomer[i].getId() == id) {
                 listCustomer[i] = inputInfoCus();
             }
         }
-        return afEditListCus = listCustomer;
+
+        System.out.println("List customer after edit");
+        showInfoCustomer();
+
+        return listCustomer;
     }
 
     @Override
-    public Customer[] reMove(Customer[] listCustomer, int id) {
-        Customer[] afDeListCus = new Customer[2];
+    public Customer[] reMove(Customer[] listCustomer) {
+        int id;
+
+        System.out.println("Enter the id you want to delete :");
+        id = Integer.parseInt(sc.nextLine());
+
         for (int i = 0; i < listCustomer.length; i++) {
             if (listCustomer[i].getId() == id) {
                 listCustomer[i] = null;
             }
         }
-        return afDeListCus = listCustomer;
+
+        System.out.println("List customer after delete");
+        showInfoCustomer();
+
+        return listCustomer;
     }
 
     @Override
@@ -71,31 +93,31 @@ public class Management implements Action {
     public void menu() {
         do {
             System.out.println("Enter your choice :" +
-                    "1. Add Customer." +
-                    "2. Edit Customer." +
-                    "3. Remove Customer." +
-                    "4. Show Info Customer." +
-                    "5. Check out." +
-                    "6. Exit.");
+                    "\n1. Add Customer." +
+                    "\n2. Edit Customer." +
+                    "\n3. Remove Customer." +
+                    "\n4. Show Info Customer." +
+                    "\n5. Check out." +
+                    "\n6. Exit.");
 
             int choice;
             choice = Integer.parseInt(sc.nextLine());
 
             switch (choice) {
                 case 1:
-                    add();
+                    add(listCustomer);
                     break;
                 case 2:
                     edit(listCustomer);
                     break;
                 case 3:
-                    reMove(listCustomer, "id");
+                    reMove(listCustomer);
                     break;
                 case 4:
                     showInfoCustomer();
                     break;
                 case 5:
-                    checkOut("id");
+                    checkOut();
                     break;
                 case 6:
                     System.out.println("SEE YOU AGAIN !");
@@ -106,13 +128,23 @@ public class Management implements Action {
     }
 
     @Override
-    public double checkOut(int id) {
+    public Customer[] checkOut(Customer[] listCustomer) {
         double total;
+        int id;
+
+        System.out.println("Enter the id you want to check out :");
+        id = Integer.parseInt(sc.nextLine());
+
         for (int i = 0; i < listCustomer.length; i++) {
             if (listCustomer[i].getId() == id) {
-                double =((double) listCustomer[i].getDayRent()) * PRICE_ROOM_1;
+                total = listCustomer[i].getDayRent() * PRICE_ROOM_1;
+                System.out.println("Totol money want to pay : " + total);
+                listCustomer[i] = null;
+                return listCustomer;
             }
         }
-        return 0;
+        System.out.println("List customer after check out");
+        showInfoCustomer();
+        return null;
     }
 }
