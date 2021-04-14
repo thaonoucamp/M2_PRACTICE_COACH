@@ -3,8 +3,6 @@ package managementHotel.structural;
 import managementHotel.creat.Customer;
 
 public interface Action {
-    double PRICE_ROOM_1 = 100d;
-    double PRICE_ROOM_2 = 200d;
 
     Customer[] add(Customer[] listCustomer);
 
@@ -17,6 +15,8 @@ public interface Action {
     Customer inputInfoCus();
 
     void menu();
+
+    Customer[] sortIdCustomer(Customer[] listCustomer);
 
     Customer[] checkOut(Customer[] listCustomer);
 

@@ -41,8 +41,8 @@ public class Person {
     @Override
     public String toString() {
         return "Customer{" +
-                "name='" + name +
-                ", birthday='" + birthday +
-                ", id=" + id + ',';
+                "name= " + name +
+                ", birthday= " + birthday +
+                ", id= " + id + ',';
     }
 }

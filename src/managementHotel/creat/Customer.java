@@ -3,17 +3,9 @@ package managementHotel.creat;
 public class Customer extends Person {
 
     private int dayRent;
-    private String typeRoom;
+    public double PRICE_ROOM = 150000d;
 
     public Customer() {
-    }
-
-    public String getTypeRoom() {
-        return typeRoom;
-    }
-
-    public void setTypeRoom(String typeRoom) {
-        this.typeRoom = typeRoom;
     }
 
     public Customer(int dayRent) {
@@ -22,13 +14,11 @@ public class Customer extends Person {
 
     public Customer(int dayRent, String typeRoom) {
         this.dayRent = dayRent;
-        this.typeRoom = typeRoom;
     }
 
-    public Customer(String name, String birthday, int id, int dayRent, String typeRoom) {
+    public Customer(String name, String birthday, int id, int dayRent) {
         super(name, birthday, id);
         this.dayRent = dayRent;
-        this.typeRoom = typeRoom;
     }
 
     public int getDayRent() {
@@ -42,7 +32,7 @@ public class Customer extends Person {
     @Override
     public String toString() {
         return super.toString() +
-                " dayRent=" + dayRent +
+                " dayRent= " + dayRent +
                 "}";
     }
 }

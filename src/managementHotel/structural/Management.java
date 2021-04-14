@@ -6,21 +6,24 @@ import java.util.Scanner;
 
 public class Management implements Action {
 
-    Customer[] listCustomer = new Customer[2];
+    Customer[] listCustomer = new Customer[0];
     Scanner sc = new Scanner(System.in);
 
 
     @Override
     public Customer[] add(Customer[] listCustomer) {
+        listCustomer = new Customer[+1];
         for (int i = 0; i < listCustomer.length; i++) {
             System.out.println("Input Customer index " + (i + 1));
             if (listCustomer[i] == null) {
                 listCustomer[i] = inputInfoCus();
             } else {
-                System.out.println("OUT OF ROOM !");
+                System.out.println("ROOM INDEX " + i + "FULL");
             }
         }
+        System.out.println("List customer after add : ");
         showInfoCustomer();
+
         return listCustomer;
     }
 
@@ -37,7 +40,7 @@ public class Management implements Action {
             }
         }
 
-        System.out.println("List customer after edit");
+        System.out.println("List customer after edit :");
         showInfoCustomer();
 
         return listCustomer;
@@ -45,6 +48,7 @@ public class Management implements Action {
 
     @Override
     public Customer[] reMove(Customer[] listCustomer) {
+        Customer[] afDeListCus = new Customer[listCustomer.length-1];
         int id;
 
         System.out.println("Enter the id you want to delete :");
@@ -52,14 +56,12 @@ public class Management implements Action {
 
         for (int i = 0; i < listCustomer.length; i++) {
             if (listCustomer[i].getId() == id) {
-                listCustomer[i] = null;
+                listCustomer[i] = listCustomer[i + 1];
             }
         }
+        afDeListCus = listCustomer;
 
-        System.out.println("List customer after delete");
-        showInfoCustomer();
-
-        return listCustomer;
+        return afDeListCus;
     }
 
     @Override
@@ -96,7 +98,7 @@ public class Management implements Action {
                     "\n1. Add Customer." +
                     "\n2. Edit Customer." +
                     "\n3. Remove Customer." +
-                    "\n4. Show Info Customer." +
+                    "\n4. Sort by id Customer." +
                     "\n5. Check out." +
                     "\n6. Exit.");
 
@@ -114,10 +116,12 @@ public class Management implements Action {
                     reMove(listCustomer);
                     break;
                 case 4:
+                    listCustomer = sortIdCustomer(listCustomer);
+                    System.out.println("List customer after sort :");
                     showInfoCustomer();
                     break;
                 case 5:
-                    checkOut();
+                    checkOut(listCustomer);
                     break;
                 case 6:
                     System.out.println("SEE YOU AGAIN !");
@@ -125,6 +129,22 @@ public class Management implements Action {
             }
 
         } while (true);
+    }
+
+    @Override
+    public Customer[] sortIdCustomer(Customer[] listCustomer) {
+        for (int i = 0; i < listCustomer.length; i++) {
+            Customer temp;
+            for (int j = 0; j < listCustomer.length; j++) {
+                if (listCustomer[i].getId() > listCustomer[j].getId()) {
+                    temp = listCustomer[i];
+                    listCustomer[i] = listCustomer[j];
+                    listCustomer[j] = temp;
+                }
+            }
+        }
+
+        return listCustomer;
     }
 
     @Override
@@ -137,14 +157,11 @@ public class Management implements Action {
 
         for (int i = 0; i < listCustomer.length; i++) {
             if (listCustomer[i].getId() == id) {
-                total = listCustomer[i].getDayRent() * PRICE_ROOM_1;
-                System.out.println("Totol money want to pay : " + total);
+                total = listCustomer[i].getDayRent() * listCustomer[i].PRICE_ROOM;
                 listCustomer[i] = null;
-                return listCustomer;
+                System.out.println("Bill have to pay : " + total);
             }
         }
-        System.out.println("List customer after check out");
-        showInfoCustomer();
-        return null;
+        return listCustomer;
     }
 }
