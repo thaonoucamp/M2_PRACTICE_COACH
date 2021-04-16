@@ -12,10 +12,6 @@ public class Show {
         List<Student> lists = new ArrayList<Student>();
 
         Management management = new Management();
-        management.add(lists);
-        for (Student s :
-                lists) {
-            System.out.println(s);
-        }
+        management.add();
     }
 }

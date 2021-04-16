@@ -37,7 +37,7 @@ public class Management {
         return newStudent;
     }
 
-    public void add(List list) {
+    public void add(List<Student> list) {
         int quantity;
         System.out.println("Enter quantity want to add");
 
@@ -48,6 +48,28 @@ public class Management {
 
             list.add(inputInfo());
         }
+
+        System.out.println("list after add --->");
+        show(list);
     }
 
+    public void show(List<Student> list) {
+        for (Object s :
+                list) {
+            System.out.println(s);
+        }
+    }
+
+    public void edit(List<Student> list) {
+        int code_Card;
+        System.out.println("Enter the code card want to edit:");
+        code_Card = Integer.parseInt(sc.nextLine());
+
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getCodeCard() == code_Card) {
+                System.out.println("Invite edit info of " + list.get(i).getName());
+                list.set(i, inputInfo());
+            }
+        }
+    }
 }

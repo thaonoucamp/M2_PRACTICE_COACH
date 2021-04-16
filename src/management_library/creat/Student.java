@@ -73,8 +73,8 @@ public class Student extends Person {
                 ", _class='" + _class + '\'' +
                 ", codeCard='" + codeCard + '\'' +
                 ", nameBook='" + nameBook + '\'' +
-                ", borrowDay=" + borrowDay + '\'' +
-                ", returnDay=" + returnDay + '\'' +
+                ", borrowDay='" + borrowDay + '\'' +
+                ", returnDay='" + returnDay + '\'' +
                 '}';
     }
 }
