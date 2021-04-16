@@ -1,23 +1,26 @@
 package managementHotel.structural;
 
-import managementHotel.creat.Customer;
+import java.util.List;
 
-public interface Action {
+public interface Action<T> {
+    int SIMPLE = 100;
+    int DOUBLE = 200;
 
-    Customer[] add(Customer[] listCustomer);
+    T inputInfo();
 
-    Customer[] edit(Customer[] listCustomer);
+    List<T> add(List<T> t);
 
-    Customer[] reMove(Customer[] listCustomer);
+    List<T> edit(List<T> t);
 
-    void showInfoCustomer();
+    List<T> delete(List<T> t);
 
-    Customer inputInfoCus();
+    List<T> sort(List<T> t);
 
-    void menu();
+    T find(List<T> t);
 
-    Customer[] sortIdCustomer(Customer[] listCustomer);
+    List<T> checkOut(List<T> t);
 
-    Customer[] checkOut(Customer[] listCustomer);
+    void show(List<T> t);
+
 
 }

@@ -12,13 +12,20 @@ public class Bill implements Thread {
     public void menu() {
         int choice;
         do {
+            System.out.println("MENU : " +
+                    "\n1. Add the client." +
+                    "\n2. Edit the info client." +
+                    "\n3. Delete the client." +
+                    "\n4. Sort the client list." +
+                    "\n5. Calculator the electric bill of client." +
+                    "\n6. Exit.");
             System.out.println("Enter your choice :");
+
             choice = Integer.parseInt(sc.nextLine());
 
-            System.out.println("MENU : ");
             switch (choice) {
                 case 1:
-                    listClients = addClient(listClients);
+                    addClient(listClients);
                     System.out.println("List clients after add :");
                     showInfo(listClients);
                     break;
@@ -67,7 +74,7 @@ public class Bill implements Thread {
     }
 
     @Override
-    public Client[] addClient(Client[] listClients) {
+    public Client[] addClient(Client[] list) {
         Client[] newListClient = new Client[listClients.length + 1];
 
         for (int i = 0; i < listClients.length; i++) {

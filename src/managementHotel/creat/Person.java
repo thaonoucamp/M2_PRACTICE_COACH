@@ -2,16 +2,18 @@ package managementHotel.creat;
 
 public class Person {
     private String name;
-    private String birthday;
     private int id;
+    private String birthday;
+    private String address;
 
     public Person() {
     }
 
-    public Person(String name, String birthday, int id) {
+    public Person(String name, int id, String birthday, String address) {
         this.name = name;
-        this.birthday = birthday;
         this.id = id;
+        this.birthday = birthday;
+        this.address = address;
     }
 
     public String getName() {
@@ -22,14 +24,6 @@ public class Person {
         this.name = name;
     }
 
-    public String getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
-    }
-
     public int getId() {
         return id;
     }
@@ -38,11 +32,28 @@ public class Person {
         this.id = id;
     }
 
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     @Override
     public String toString() {
-        return "Customer{" +
-                "name= " + name +
-                ", birthday= " + birthday +
-                ", id= " + id + ',';
+        return
+                "name='" + name + '\'' +
+                        ", id=" + id +
+                        ", birthday='" + birthday + '\'' +
+                        ", address='" + address + '\'';
     }
 }
