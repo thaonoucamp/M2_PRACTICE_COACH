@@ -2,55 +2,85 @@ package management_library.creat;
 
 public class Student extends Person {
     private String _class;
-    private int codeCard;
+    private String codeCard;
     private String nameBook;
-    private int borrowDay;
-    private int returnDay;
+    private String borrowDay;
+    private String returnDay;
 
     public String get_class() {
         return _class;
     }
 
-    public void set_class(String _class) {
-        this._class = _class;
+    public boolean set_class(String _class) {
+        if (_class.equals("")) {
+            System.err.println("Class is not empty !");
+            return false;
+        } else {
+            this._class = _class;
+            return true;
+        }
     }
 
-    public int getCodeCard() {
+    public String getCodeCard() {
         return codeCard;
     }
 
-    public void setCodeCard(int codeCard) {
-        this.codeCard = codeCard;
+    public boolean setCodeCard(String codeCard) {
+        if (codeCard.equals("")) {
+            System.err.println("Enter value for code card :");
+            return false;
+        } else {
+            this.codeCard = codeCard;
+            return true;
+        }
     }
 
     public String getNameBook() {
         return nameBook;
     }
 
-    public void setNameBook(String nameBook) {
-        this.nameBook = nameBook;
+    public boolean setNameBook(String nameBook) {
+        if (nameBook != "") {
+            this.nameBook = nameBook;
+            return true;
+        } else {
+            System.err.println("Enter the value for name book !");
+            return false;
+        }
     }
 
-    public int getBorrowDay() {
+    public String getBorrowDay() {
         return borrowDay;
     }
 
-    public void setBorrowDay(int borrowDay) {
-        this.borrowDay = borrowDay;
+    public boolean setBorrowDay(String borrowDay) {
+        if (borrowDay.equals("")) {
+            System.err.println("Enter the borrow day !");
+            return false;
+        } else {
+            this.borrowDay = borrowDay;
+            return true;
+        }
     }
 
-    public int getReturnDay() {
+    public String getReturnDay() {
         return returnDay;
     }
 
-    public void setReturnDay(int returnDay) {
-        this.returnDay = returnDay;
+    public boolean setReturnDay(String returnDay) {
+        if (returnDay.equals("")) {
+            System.err.println("Enter the return book day !");
+            return false;
+        } else {
+            this.returnDay = returnDay;
+            return true;
+        }
     }
 
     public Student() {
     }
 
-    public Student(String _class, int codeCard, String nameBook, int borrowDay, int returnDay) {
+    public Student(String _class, String codeCard, String nameBook, String borrowDay, String returnDay) {
         this._class = _class;
         this.codeCard = codeCard;
         this.nameBook = nameBook;
@@ -58,7 +88,7 @@ public class Student extends Person {
         this.returnDay = returnDay;
     }
 
-    public Student(String name, String birthday, String _class, int codeCard, String nameBook, int borrowDay, int returnDay) {
+    public Student(String name, String birthday, String _class, String codeCard, String nameBook, String borrowDay, String returnDay) {
         super(name, birthday);
         this._class = _class;
         this.codeCard = codeCard;

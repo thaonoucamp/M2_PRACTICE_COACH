@@ -16,16 +16,29 @@ public class Person {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public boolean setName(String name) {
+        if (name.equals("") || name == null) {
+            System.err.println("name is not empty !");
+            return false;
+        } else {
+            this.name = name;
+            return true;
+        }
     }
+
 
     public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
+    public boolean setBirthday(String birthday) {
+        if (birthday.equals("") || birthday == null) {
+            System.err.println("name is not empty !");
+            return false;
+        } else {
+            this.birthday = name;
+            return true;
+        }
     }
 
     @Override
