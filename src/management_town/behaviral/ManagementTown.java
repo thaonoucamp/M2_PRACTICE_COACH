@@ -179,6 +179,7 @@ public class ManagementTown implements Action<Household> {
     public void editInfoMember(List<Household> list) {
         System.out.println("Enter the name want to edit");
         String name = sc.nextLine();
+
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getMember().get(i).getName().equals(name)) {
                 list.get(i).getMember().set(i, inputInfoMember());
@@ -187,12 +188,18 @@ public class ManagementTown implements Action<Household> {
         show(list);
     }
 
-    public void deleteMember(List<Household> list){
-        System.out.println("Enter the name want to delete");
-        String name = sc.nextLine();
+    public void deleteMember(List<Household> list) {
         for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getMember().get(i).getName().equals(name)) {
-                list.get(i).getMember().remove(i);
+            if (checkIndex(list) == i) {
+                for (int j = 0; j < list.get(i).getMember().size(); j++) {
+                    int index;
+                    System.out.println("Enter the name want to delete");
+                    String name = sc.nextLine();
+                    if (list.get(i).getMember().get(i).getName().equals(name)) {
+                        index = j;
+                        list.get(i).getMember().remove(index);
+                    }
+                }
             }
         }
         show(list);

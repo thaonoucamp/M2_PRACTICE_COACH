@@ -42,6 +42,6 @@ public class Person {
     public String toString() {
         return "name='" + name + '\'' +
                 ", birthday='" + birthday + '\'' +
-                ", job='" + job + '\'';
+                ", job='" + job + '\n';
     }
 }
